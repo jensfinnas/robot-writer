@@ -1,0 +1,24 @@
+<html>
+<h1>
+    {% if row["change2014"] > 0 %}
+        Unemployment on the rise in {{ row["municipality"] }}
+    {% endif %}
+
+    {% if row["change2014"] < 0 %}
+        Unemployment falls in  {{ row["municipality"] }}
+    {% endif %}
+
+    {% if row["change2014"] == 0 %}
+        Unemployment stable in {{ row["municipality"] }}
+    {% endif %}
+</h1>
+
+<small>
+    <em>By Mr Robot</em>
+</small>
+
+<p>
+    {{ row["municipality"] }} reported an unemployment level of {{ row["y2014"] }} percent last year, compared to {{ row["y2013"] }} percent in 2013.
+</p>
+
+</html>

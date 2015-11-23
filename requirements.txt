@@ -1,0 +1,17 @@
+Babel==2.1.1
+Jinja2==2.8
+MarkupSafe==0.23
+SQLAlchemy==1.0.9
+agate==1.1.0
+csvkit==0.9.1
+dbf==0.94.003
+isodate==0.5.4
+jdcal==1.0
+openpyxl==2.2.0-b1
+parsedatetime==1.5
+python-dateutil==2.2
+pytimeparse==1.1.5
+pytz==2015.7
+six==1.10.0
+wsgiref==0.1.2
+xlrd==0.9.4

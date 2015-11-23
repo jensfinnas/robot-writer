@@ -1,0 +1,46 @@
+{% set ordinal = ["", "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"] %}
+<html>
+<meta charset="utf-8">
+<h1>
+    {% if row["change2014"] > 0 %}
+        Unemployment on the rise in {{ row["municipality"] }}
+    {% endif %}
+
+    {% if row["change2014"] < 0 %}
+        Unemployment falls in  {{ row["municipality"] }}
+    {% endif %}
+
+    {% if row["change2014"] == 0 %}
+        Unemployment stable in {{ row["municipality"] }}
+    {% endif %}
+
+    {% if row["consecutive_development"] > 1 %} 
+        – again
+    {% endif %}
+</h1>
+
+<small>
+    <em>By Mr Robot</em>
+</small>
+
+<p>
+    {{ row["municipality"] }} reported an unemployment level of {{ row["y2014"] }} percent last year, compared to {{ row["y2013"] }} percent in 2013.
+
+    {% if row["consecutive_development"] > 1 %}
+        It is the {{ ordinal[row["consecutive_development"]] }} year in a row that unemployment {% if row["is_growing"] %}grew{% else %} fell{% endif %}.
+    {% endif %}
+    {% if row["consecutive_development"] == 1 and row["change2013"] != 0 %}
+        This marked a change in development. Between 2012 and 2013 unemployment {% if row["change2013"] > 0 %}grew{% else %} fell{% endif %} by {{ row["change2013"] }} percent.
+    {% endif %}
+</p>
+
+<p>
+    {% set best = comparison_tables["county"].order_by("change2014", reverse=False).rows[0] %}
+    {% set worst = comparison_tables["county"].order_by("change2014", reverse=True).rows[0] %}
+    
+    {% if row["change2014_perc_rank_in_county"] > 85 and row["is_growing"] %}
+        {{ row["municipality"] }} was one of the municipalities in {{ row["county"] }} where unemployment grew the most with an increase of {{ row["change2014"] }}, compared to for example {{ best["municipality"] }} where unemployment {% if best["is_growing"] %} also increased, but only {% else %} decreased {% endif %} by {{ best["change2014"] }} percent.
+    {% endif %}
+</p>
+
+</html>
