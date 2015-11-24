@@ -2,7 +2,7 @@
 
 This is a simple example of what news robot could look like in Python. The robot takes a csv file of data and renders an article based on a template.
 
-It uses [agate][(http://agate.readthedocs.org/) to handle csv files and [Jinja2](http://jinja.pocoo.org/docs/dev/) to render templates.
+It uses [agate](http://agate.readthedocs.org/) to handle csv files and [Jinja2](http://jinja.pocoo.org/docs/dev/) to render templates.
 
 ### Setup
 
